@@ -3,7 +3,7 @@ let famousPeople=[
 	{
 	  title: "The Man in Black",
 	  name: "Johnny Cash",
-	  bio: "Johnny Cash, the Man in Black, was a singer, guitarist and songwriter whose music innovatively mixed country, rock, blues and gospel influences.",
+	  bio: "Johnny Cash, was a singer, guitarist and songwriter whose music innovatively mixed country, rock, blues and gospel influences.",
 	  image: "johnnyCashKitten.jpg",
 	  lifespan: {
 	    birth: 1932,
@@ -32,63 +32,77 @@ let famousPeople=[
 	 } 
 ];
 
-
-// function buildCard(){
-//     let card = document.createElement("div");
-//     card.setAttribute("id", "cardwrapper");
-//     card.innerHTML = input.value + "<br>";
-//     container.appendChild(card);
-    
-//     let deleteBtn = document.createElement("button");
-//     deleteBtn.setAttribute("class", "removeCard");
-//     deleteBtn.innerHTML = "removeCard"
-
-//     card.appendChild(deleteBtn);
-//     container.appendChild(card);
-
-
-//     deleteBtn.addEventListener("click", function(){
-//         container.removeChild(card);
-//     })
-// };
-
-
 // create card creates elements
-// header name/title
-// section bio/img
-// footer lifespan
+	// header name/title
+	// section bio/img
+	// footer lifespan
 
-function createCard(people){
+function createCard(person){
+	console.log("person", person);
 	let card = document.createElement("person");
-	card.className = "card";
+	card.classList.add("card");
 
 
 	let header = document.createElement("header");
-	header.innerHTML = people.name, people.title;
+	header.classList.add("personHeader");
+	header.innerHTML = person.name + " " + person.title;
 	card.appendChild(header);
-	console.log(famousPeople[0].name, famousPeople[0].title);
+	console.log(person.name, person.title);
 
 
 	let section = document.createElement("section");
-	section.innerHTML = people.bio, people.img;
+	section.classList.add("personSection");
+	section.innerHTML = person.bio + " " + person.img;
 	card.appendChild(section);
 	console.log(famousPeople[0].bio );
 
 	let footer = document.createElement("footer");
-	footer.innerHTML = people.lifespan;
+	footer.classList.add("personFooter");
+	footer.innerHTML = person.lifespan;
 	card.appendChild(footer);
 	console.log(famousPeople[0].lifespan);
 
-	return createCard
+	return card
+	console.log(card);
 }
-createCard(famousPeople[0]);
 
 // populate dom put into dom
 let populateCard = document.getElementById("container");
 
 function populateDom(){
-for (var i = 0; i < famousPeople[i]; i++)
-	console.log(famousPeople );
+	for (var i = 0; i < famousPeople.length; i++){
+		console.log("famous person", famousPeople[i]);
+		var create = createCard(famousPeople[i]);
+		console.log("populateDom create", create );
+		populateCard.appendChild(create);
+		// off or even with background color style
+		if (i %2 == 0 ){
+			create.classList.toggle("yellow");
+		} else {
+			create.classList.toggle("blue");
+		}
+	}
 }
+populateDom();
 
-// figure out odd or even
+// event listener (function will be needed inside)
+// dotted black border on click of card
+
+var currentCard = document.getElementsByClassName("card");
+	console.log("card", currentCard);
+
+	for(var i = 0; i < currentCard.length; i++){
+		currentCard[i].addEventListener("click", function(){
+			event.currentTarget.classList.toggle("border")
+			var input = document.getElementById("input");
+			input.focus();
+
+			console.log("current", currentCard[i]);
+	})
+};
+
+input = document.getElementById("input");
+
+input.addEventListener("click", function(){
+	event.currentTarget.classList
+})
