@@ -16,8 +16,7 @@
 // });
 
 // famous person array
-{
-	
+let famousPeople=[
 	{
 	  title: "The Man in Black",
 	  name: "Johnny Cash",
@@ -45,6 +44,9 @@
 	  image: "dolly-parton.jpg",
 	  lifespan: {
 	    birth: 1946,
-	    death: NA
+	    death: "living"
 	  }
-}
+	 } 
+];
+
+
