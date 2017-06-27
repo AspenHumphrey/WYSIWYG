@@ -1,23 +1,5 @@
-//  var counter = 0;
-// var outputEl = document.getElementById("outputEl");
-// for (; counter < 5; counter++) {
-//   // Give each person element a unique identifier
-//   outputEl.innerHTML += `<div class="person__container" id="person--${counter}"></div>`;
-// }
-
-// // Now containerEl will have elements in it
-// var containerEl = document.getElementsByClassName("person__container");
-
-// // Event listeners are created
-// for (var i = 0; i < containerEl.length; i++) {
-//   containerEl[i].addEventListener("click", function (event) {
-//     // Logic to execute when the element is clicked
-//   });
-// });
-
 // famous person array
-{
-	
+let famousPeople=[
 	{
 	  title: "The Man in Black",
 	  name: "Johnny Cash",
@@ -45,6 +27,68 @@
 	  image: "dolly-parton.jpg",
 	  lifespan: {
 	    birth: 1946,
-	    death: NA
+	    death: "living"
 	  }
+	 } 
+];
+
+
+// function buildCard(){
+//     let card = document.createElement("div");
+//     card.setAttribute("id", "cardwrapper");
+//     card.innerHTML = input.value + "<br>";
+//     container.appendChild(card);
+    
+//     let deleteBtn = document.createElement("button");
+//     deleteBtn.setAttribute("class", "removeCard");
+//     deleteBtn.innerHTML = "removeCard"
+
+//     card.appendChild(deleteBtn);
+//     container.appendChild(card);
+
+
+//     deleteBtn.addEventListener("click", function(){
+//         container.removeChild(card);
+//     })
+// };
+
+
+// create card creates elements
+// header name/title
+// section bio/img
+// footer lifespan
+
+function createCard(people){
+	let card = document.createElement("person");
+	card.className = "card";
+
+
+	let header = document.createElement("header");
+	header.innerHTML = people.name, people.title;
+	card.appendChild(header);
+	console.log(famousPeople[0].name, famousPeople[0].title);
+
+
+	let section = document.createElement("section");
+	section.innerHTML = people.bio, people.img;
+	card.appendChild(section);
+	console.log(famousPeople[0].bio );
+
+	let footer = document.createElement("footer");
+	footer.innerHTML = people.lifespan;
+	card.appendChild(footer);
+	console.log(famousPeople[0].lifespan);
+
+	return createCard
 }
+createCard(famousPeople[0]);
+
+// populate dom put into dom
+let populateCard = document.getElementById("container");
+
+function populateDom(){
+for (var i = 0; i < famousPeople[i]; i++)
+	console.log(famousPeople );
+}
+
+// figure out odd or even
