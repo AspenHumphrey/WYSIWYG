@@ -96,10 +96,11 @@ var currentCard = document.getElementsByClassName("card");
 			event.currentTarget.classList.toggle("border")
 			var input = document.getElementById("input");
 			input.focus();
-
 			console.log("current", event.currentTarget);
+ 
+ 			inputEvent(event.currentTarget);
+			// console.log("card", currentCard.querySelector(".personSection"));
 
-		inputEvent(event.currentTarget);
 	})
 };
 
@@ -107,24 +108,26 @@ var currentCard = document.getElementsByClassName("card");
 input = document.getElementById("input");
 
 function inputEvent(currentCard){
-	input.addEventListener("keypress", function(event){
-		if(event.key === "Enter"){
-			let inputText = input.value;
-			clearTextBox(inputText);
-			mirrorText();
-		}
-		console.log("event", input.value);
-		console.log("inputEvent", currentCard.querySelector(".personSection"));
-	})
-};
+  
+ 	input.addEventListener("keypress", function(event){
+ 		if(event.key === "Enter"){
+ 			let inputText = input.value;
+ 			clearTextBox(inputText);
+ 			// mirrorText();
+ 		}
+ 		console.log("event", input.value);
+ 		console.log("inputEvent", currentCard.querySelector(".personSection"));
+ 	})
+ };
+ 
+ function clearTextBox(event, inputText){
+ 	if (inputText !== ""){
+ 		input.value = "";
+ 	}
+ };
+ 
+ // function mirrorText(mirror){
+ // 	famousPeople = mirror;
+	// console.log("mirrorText?", mirror);
+ // }; 
 
-function clearTextBox(event, inputText){
-	if (inputText !== ""){
-		input.value = "";
-	}
-};
-
-function mirrorText(mirror){
-	famousPeople = mirror;
-	console.log("mirrorText?", mirror);
-};
