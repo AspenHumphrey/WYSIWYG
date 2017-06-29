@@ -100,12 +100,15 @@ var currentCard = document.getElementsByClassName("card");
  
  			inputEvent(event.currentTarget);
 			// console.log("card", currentCard.querySelector(".personSection"));
+
 	})
 };
 
+// make own function then call in card func- use querySElector on current card in card func
 input = document.getElementById("input");
 
 function inputEvent(currentCard){
+  
  	input.addEventListener("keypress", function(event){
  		if(event.key === "Enter"){
  			let inputText = input.value;
@@ -127,3 +130,4 @@ function inputEvent(currentCard){
  // 	famousPeople = mirror;
 	// console.log("mirrorText?", mirror);
  // }; 
+
