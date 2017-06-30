@@ -55,9 +55,9 @@ function createCard(person) {
 
     let footer = document.createElement("footer");
     footer.classList.add("personFooter");
-    footer.innerHTML = person.lifespan;
+    footer.innerHTML = person.lifespan.birth + "-" + person.lifespan.death;
     card.appendChild(footer);
-    console.log(famousPeople[0].lifespan);
+    console.log(famousPeople[0].lifespan.birth);
 
 
     return card
@@ -86,23 +86,37 @@ populateDom();
 // event listener (function will be needed inside)
 // dotted black border on click of card
 
+let input = document.getElementById("input");
 var currentCard = document.getElementsByClassName("card");
-console.log("card", currentCard);
-
+let selectedBio = null;
+//adding event listener to all
 for (var i = 0; i < currentCard.length; i++) {
     currentCard[i].addEventListener("click", function() {
-        event.currentTarget.classList.toggle("border")
-        var input = document.getElementById("input");
+        // rm class on all 
+        for (var i = 0; i < currentCard.length; i++) {
+            currentCard[i].classList.remove("border");
+        }
+        event.currentTarget.classList.add("border");
+        let selectedCard = document.getElementsByClassName("border")[0];
+        selectedBio = this.querySelector(".personSection");
         input.focus();
         console.log("current", event.currentTarget);
 
-        inputEvent(event.currentTarget);
     })
 };
 
+
 // make own function then call in card func- use querySElector on current card in card func
-input = document.getElementById("input");
-let outputText = document.getElementsByClassName("personSection");
+
+input.addEventListener("keyup", function(event) {
+    let inputText = input.value;
+    if (event.key === "Enter") {
+         clearTextBox(inputText);
+    }
+    selectedBio.innerHTML = inputText;
+    console.log("event", input.value);
+    console.log("inputEvent", selectedBio);
+});
 
 function clearTextBox(event, inputText) {
     if (inputText !== " ") {
@@ -110,17 +124,6 @@ function clearTextBox(event, inputText) {
     }
 };
 
-function inputEvent(currentCard) {
 
-    input.addEventListener("keypress", function(event) {
-        if (event.key === "Enter") {
-            let inputText = input.value;
-            outputText.innerHTML = inputText + " " ;
-            currentCard.appendChild(outputText);
-            clearTextBox(inputText);
-        }
-        console.log("event", input.value);
-        console.log("output", outputText);
-        console.log("inputEvent", currentCard.querySelector(".personSection"));
-    })
-};
+
+// create a gard to make sur eyou click on card
